@@ -207,10 +207,11 @@ func main() {
 	bestK := 1
 	bestAcc := 0.00
 
-	// Try to get the best k from 1 to 1000 based on length of given data test
+	// Try to get the best k from 1 to 100
 	for i := 1; i <= 100; i++ {
 		prediction := []string{}
 
+		// Perform the validation from data test to data validation
 		for j := 0; j < len(val); j++ {
 			neighbors := GetNeighbors(val[j], test, i)
 			result := GetResponse(neighbors)
@@ -246,25 +247,9 @@ func main() {
 	writer := csv.NewWriter(outFile)
 	defer writer.Flush()
 
-	head := []string{
-		"atribut 1",
-		"atribut 2",
-		"atribut 3",
-		"atribut 4",
-		"kelas",
-	}
-
-	if err := writer.Write(head); err != nil {
-		log.Fatalln("ERROR WRITIING RECORD TO CSV:", err)
-	}
-
 	// Write the class value for the data
 	for _, r := range dataTest {
 		csvData := []string{
-			fmt.Sprintf("%.3f", r.X1),
-			fmt.Sprintf("%.3f", r.X2),
-			fmt.Sprintf("%.3f", r.X3),
-			fmt.Sprintf("%.3f", r.X4),
 			fmt.Sprintf("%s", r.Y),
 		}
 
