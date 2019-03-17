@@ -241,7 +241,7 @@ func main() {
 	}
 
 	// Make file out prediction of the data test
-	outFile, _ := os.Create("Prediksi_Tugas2AI_13-1174099.csv")
+	outFile, _ := os.Create("Prediksi_Tugas2AI_1301174099.csv")
 	defer outFile.Close()
 
 	writer := csv.NewWriter(outFile)
